@@ -1,0 +1,172 @@
+# ROBOTICS ENGINEERING - Git ignore template
+# Put this file at the repository root. Review before your first commit.
+# Ignore rules do NOT encrypt files or remove previously committed secrets.
+# Never hardcode passwords, API keys, Wi-Fi passwords or MQTT credentials.
+# Keep sanitized *.example templates in Git; load real values locally.
+
+# 1. Secrets, account tokens and private keys
+.env
+.env.*
+!.env.example
+!.env.*.example
+secrets/
+.secrets/
+credentials/
+private/
+*.secret
+*.secrets.*
+credentials.json
+credentials.*.json
+service-account*.json
+token.json
+tokens.json
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+# PEM can contain public certificates too; explicitly allow reviewed public ones.
+*.pem
+
+# 2. Local hardware/network configuration
+# Put robot/PLC/stove IPs, serial ports and credentials in these local files.
+# Example: config/devices.local.yaml -> ignored
+#          config/devices.example.yaml -> committed after sanitizing
+*.local.json
+*.local.yaml
+*.local.yml
+*.local.toml
+*.local.ini
+*.local.cfg
+config/local/
+config/private/
+wifi_secrets.h
+arduino_secrets.h
+secrets.h
+secrets.hpp
+sdkconfig.local
+mosquitto.passwd
+passwd.mqtt
+zigbee-network-backup*.json
+coordinator_backup.json
+
+# 3. ESP-IDF / PlatformIO / Arduino build output
+.pio/
+.pioenvs/
+.piolibdeps/
+managed_components/
+sdkconfig.old
+sdkconfig
+# Keep sdkconfig.defaults, partitions.csv, platformio.ini,
+# dependencies.lock, CMakeLists.txt and source files under version control.
+
+# 4. Python / AI development
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+*.egg-info/
+
+# 5. ROS / ROS 2 / CMake generated directories
+build/
+install/
+log/
+devel/
+logs/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+colcon_logs/
+catkin_generated/
+
+# 6. C# / .NET / Visual Studio
+[Bb]in/
+[Oo]bj/
+.vs/
+TestResults/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+appsettings.Local.json
+appsettings.*.Local.json
+# Do not store secrets in tracked appsettings.json or launchSettings.json.
+
+# 7. Local web dashboards / Node.js
+node_modules/
+dist/
+.next/
+.nuxt/
+coverage/
+*.tsbuildinfo
+
+# 8. Private sensor data, camera recordings and AI datasets
+# Store sensitive captures in these directories, not among source files.
+data/private/
+data/raw/
+datasets/private/
+recordings/
+captures/
+rosbags/
+*.bag
+*.bag.active
+*.mcap
+*.pcap
+*.pcapng
+# Do not ignore all JPG/PNG/MP4: reviewed docs and demo assets may be needed.
+# Optional large local model directory; keep scripts to fetch models in Git.
+models/local/
+checkpoints/
+runs/
+wandb/
+
+# 9. Local databases, backups and diagnostic output
+*.log
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+*.db-wal
+*.db-shm
+backups/
+database/private/
+crash-dumps/
+*.dmp
+# Keep schema migrations and sanitized seed data under version control.
+
+# 10. Confidential customer/mechanical/electrical project files
+# Move confidential CAD, PLC exports and BOMs into these directories.
+# Do not globally ignore CAD/G-code/PLC extensions: they can be source files.
+docs/confidential/
+cad/private/
+plc/private/
+robot/private/
+customer-data/
+
+# 11. OS/editor temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+# Shared .vscode settings may be useful; inspect them for secrets before commit.
+
+# Add project-specific private paths below after reviewing your repository.
